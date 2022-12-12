@@ -1,3 +1,13 @@
+When setting up a new VPC to deploy EC2 instances, we usually follow these basic steps.
+
+    Create a vpc
+    Create subnets for different parts of the infrastructure
+    Attach an internet gateway to the VPC
+    Create a route table for a public subnet
+    Create security groups to allow specific traffic
+    Create ec2 instances on the subnets
+
+
 [1] // CREATE SSH KEYS IN AWS MANAGEMENT CONSOLE AND PUT PEM IN THE PATH OF THE MAIN.TF TERRAFORM ----------------------
 -----------> PUT *.PEM FILE IN THE PATH OF TERRAFROM MAIN.TF
 
@@ -8,13 +18,16 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 [3] // CONFIGURE AWS CLI   ------------------------------------------
+
 aws configure
 
 [4] // INSTALL TERRAFORM  --------------------------------------------
 /* UPDATE LINUX FIRST
+
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 
 [5] /* INSTALL TERRAFORM ----------------------------------------------
+
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 gpg --no-default-keyring \
@@ -32,12 +45,15 @@ sudo apt-get install terraform
 terraform version
 
 [6] // INIT TERRAFORM ------------------------------------------------------------------------------------------------
+
 terraform init
 
 [7] // PLAN TERRAFORM ------------------------------------------------------------------------------------------------
+
 terraform plan
 
 [8] // APPLY TERRAFORM ------------------------------------------------------------------------------------------------
+
 terraform apply
 
 [9] // CONNECT TO THE INSTANCES  ------------------------------------------------------------------------------------------------
@@ -53,6 +69,7 @@ TARGET: INTERNET GATEWAY IN USE ---> EJ : igw-0063c1e60a949f2c0
 ******************* ///// IMPORTANT IF UNABLE TO CONNECT VIA SSH ////// *******************
 
 [10] // SSH TO THE INSTANCES  --------------------
+
 ssh -i "*******.pem" USER-NAME@xxx.xxx.xxx.xxx
 
 The default user name for your EC2 instance is determined by the AMI that was specified when you launched the instance.
@@ -69,4 +86,5 @@ The default user names are:
     Otherwise, check with the AMI provider.
     
 [11] // DESTROY EC2 INSTANCE USED FOR LAB IN TERRAFORM ---------------------------------------------
+
 terraform destroy
