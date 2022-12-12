@@ -116,7 +116,7 @@ resource "aws_security_group" "ec2lab_web_sg" {
 ## EC2 INSTANCE ##
 # Create ec2 instances on the subnets #
 resource "aws_instance" "web_instance" {
-  ami           = "ami-0b0dcb5067f052a63"  #Canonical, Ubuntu, 22.04 LTS
+  ami           = "ami-0b0dcb5067f052a63"  #Amazon Linux (amzn2-ami-kernel-5.10-hvm-2.0.20221103.3-x86_64-gp2)
   instance_type = "t2.micro"
   key_name      = "dg_ec2lab_keys"
 
